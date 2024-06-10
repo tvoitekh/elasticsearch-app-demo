@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ElasticGPT Search Results</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-5 text-center">Search Results</h1>
+    <div class="row mt-4">
+      {% if results %}
+        {% for result in results %}
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              {% if result.image %}
+                <img src="{{ result.image }}" class="card-img-top" alt="Product Image">
+              {% else %}
+                {% set scraped_image = scrape_image(result.link) %}
+                {% if scraped_image %}
+                  <img src="{{ scraped_image }}" class="card-img-top" alt="Product Image">
+                {% endif %}
+              {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ result.name }}</h5>
+                <p class="card-text">Category: {{ result.main_category }}</p>
+                <p class="card-text">Sub Category: {{ result.sub_category }}</p>
+                <p class="card-text">Ratings: {{ result.ratings }} ({{ result.no_of_ratings }} ratings)</p>
+                <p class="card-text">Price: Rs {{ result.discount_price }}</p>
+                <a href="{{ result.link }}" class="btn btn-primary">View Product</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-center mt-4">No results found.</p>
+      {% endif %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{{ url_for('index') }}" class="btn btn-primary">New Search</a>
+    </div>
+  </div>
+</body>
+</html>

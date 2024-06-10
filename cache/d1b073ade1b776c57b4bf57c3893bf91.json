@@ -1,0 +1,22 @@
+{
+"query": {
+"bool": {
+"must": [
+{
+"bool": {
+"should": [
+{ "match": { "name": "oven" } }
+]
+}
+},
+{
+"range": {
+"actual_price": {
+"lt": 2000
+}
+}
+}
+]
+}
+}
+}

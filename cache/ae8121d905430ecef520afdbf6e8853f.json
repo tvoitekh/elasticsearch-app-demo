@@ -1,0 +1,1 @@
+{"query":{"bool":{"must":[{"bool":{"should":[{"match":{"name":"oven"}},{"match":{"name":"fridge"}}]}},{"range":{"actual_price":{"lt":2000}}}]}}}
