@@ -8,6 +8,12 @@ https://github.com/tvoitekh/elasticsearch-ai-query-app.git
 ```
 and follow the instructions in ```README.md``` included there
 
+### Clone and navigate to the demo repository
+
+```bash
+git clone https://github.com/tvoitekh/elasticsearch-app-demo.git
+cd elasticsearch-app-demo
+```
 ### Install the dependencies
 
 ```bash
